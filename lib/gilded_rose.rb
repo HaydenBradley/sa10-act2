@@ -8,7 +8,8 @@ class Item
   def initialize(quality, days_remaining)
     @quality, @days_remaining = quality, days_remaining
   end
-  
+  def tick
+  end
 end
 class Normal < Item
   def tick
@@ -32,6 +33,10 @@ class Backstage < Item
   @quality += 1
   @quality += 1 if @days_remaining < 10
   @quality += 1 if @days_remaining < 5
+  end
+end
+class Sulfuras < Item
+  def tick
   end
 end
 
