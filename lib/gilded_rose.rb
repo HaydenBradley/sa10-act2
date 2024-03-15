@@ -1,8 +1,16 @@
 class GildedRose
+  DEFAULT_CLASS = Item
+  SPECIALIZED_CLASSES = {
+    'normal'      => Normal,
+    'Aged Brie'   => Brie,
+    'Backstage passes to a TAFKAL80ETC' => Backstage}
 
-  def self.for(name:, days_remaining:, quality:)
-    klass_for(name).new(quality, days_remaining)
+  def self.for(name, days_remaining, quality)
+    (SPECIALIZED_CLASSES[name] || DEFAULT_CLASS)
+    new (quality, days_remaining)
   end
+
+end
 class Item
   attr_reader :quality, :days_remaining
   def initialize(quality, days_remaining)
@@ -33,10 +41,6 @@ class Backstage < Item
   @quality += 1
   @quality += 1 if @days_remaining < 10
   @quality += 1 if @days_remaining < 5
-  end
-end
-class Sulfuras < Item
-  def tick
   end
 end
 
