@@ -28,6 +28,14 @@ class GildedRose
     @quality += 1
     @quality +=1 if @days_remaining <= 0
   end
+  def quality
+    return item.quality if item
+    @quality
+  end
+  def days_remaining 
+    return item.days_remaining if item
+    @days_remaining
+  end
   def sulfuras_tick
   end
   def backstage_tick
